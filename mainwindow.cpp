@@ -24,13 +24,13 @@ MainWindow::~MainWindow()
 }
 
 QString MainWindow::FindLongest() {
-    QString input = ui->textEdit_input->toPlainText().trimmed(); // Trim leading and trailing whitespace
+    QString input = ui->textEdit_input->toPlainText().trimmed();
     if (input.isEmpty()) {
         throw std::invalid_argument("В строке нет слов.");
     }
-    QRegularExpression nonLetterRegex("[^а-яёА-ЯЁa-zA-Z\\s]"); // Регулярное выражение для всех символов, кроме букв
+    QRegularExpression nonLetterRegex("[^а-яёА-ЯЁa-zA-Z\\s]");
     QString words = input;
-    words.replace(nonLetterRegex, ""); // Замена всех не буквенных символов на пустую строку
+    words.replace(nonLetterRegex, "");
     int startPos = 0;
     int maxLen = 0;
     QString longestWords;
@@ -87,10 +87,9 @@ void MainWindow::updateProgressBar() {
     progressBarValue += 1;
     ui->progressBar->setValue(progressBarValue);
 
-    // Update the progress bar color dynamically
-    int red = 5 + (progressBarValue * 2.5); // From 5 to 255
-    int blue = 184 - (progressBarValue * 1.84); // From 184 to 0
-    int green = 204 - (progressBarValue * 2.04); // From 204 to 0
+    int red = 5 + (progressBarValue * 2.5);
+    int blue = 184 - (progressBarValue * 1.84);
+    int green = 204 - (progressBarValue * 2.04);
 
     ui->progressBar->setStyleSheet(
         QString("QProgressBar {"
